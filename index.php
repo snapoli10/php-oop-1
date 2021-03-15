@@ -1,4 +1,18 @@
 <?php
+	class Store {
+		public $name;
+		private $videogames = [];
+
+		public function __construct($name) {
+        $this->name = $name;
+    }
+
+		public function addVideogame(Videogame $videogame) {
+			$this->videogames[] = $videogame;
+		}
+	}
+
+
 	class Videogame {
 		public $title;
 		public $producer;
@@ -12,6 +26,8 @@
 			$this->price = $price;
 		}
 	}
+
+	$storeOne = new Store('store1');
 
 	$videogameOne = new Videogame('aaa', 'pippo', 'adventure', '20€');
 	echo $videogameOne->title . '<br />';
@@ -30,3 +46,9 @@
 	echo $videogameThree->producer . '<br />';
 	echo $videogameThree->genre . '<br />';
 	echo $videogameThree->price . '<br /><br/ >';
+
+	$storeOne->addVideogame($videogameOne);
+	$storeOne->addVideogame($videogameTwo);
+	$storeOne->addVideogame($videogameThree);
+
+	print_r($storeOne);
